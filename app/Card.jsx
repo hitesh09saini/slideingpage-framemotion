@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Card = ({ item, i, targetScale, range, progress }) => {
@@ -12,15 +12,18 @@ const Card = ({ item, i, targetScale, range, progress }) => {
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
 
- const scale = useTransform(progress, range, [1, targetScale]);
-
+  const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
     <div className={` h-screen flex justify-center items-center sticky top-0 `}>
       <motion.div
         ref={container}
         className={`flex  m-3 relative flex-col items-center gap-4 p-4 px-6 rounded-xl  top-[-10%] `}
-        style={{ backgroundColor: item.color, top: `calc(-10% + ${i * 15}px)`, scale}}
+        style={{
+          backgroundColor: item.color,
+          top: `calc(-10% + ${i * 15}px)`,
+          scale,
+        }}
       >
         <h1 className={"text-5xl"}>{item.title}</h1>
         <div className={"w-full flex  justify-between gap-4"}>

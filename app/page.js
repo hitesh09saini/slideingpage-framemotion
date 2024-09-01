@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import React, { useRef} from "react";
+import { useScroll } from "framer-motion";
+import Card from "./Card";
 
 const data = [
   {
@@ -46,11 +48,9 @@ const data = [
   },
 ];
 
-import Card from "./Card";
-import { useScroll } from "framer-motion";
 
 const page = () => {
-  const container = React.useRef(null);
+  const container = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: container,
